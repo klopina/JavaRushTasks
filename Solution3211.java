@@ -28,3 +28,13 @@ public class Solution {
         return hexString.toString().equals(md5);
     }
 }
+
+public static boolean compareMD5(ByteArrayOutputStream byteArrayOutputStream, String md5) throws Exception {
+        MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+        byte[] digest = messageDigest.digest(byteArrayOutputStream.toByteArray());
+        StringBuffer hexString = new StringBuffer();
+        for (int i = 0; i < digest.length; i++) {
+            hexString.append(String.format("%02x", digest[i]));
+        }
+        return hexString.toString().equals(md5);
+    }
